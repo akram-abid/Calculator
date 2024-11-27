@@ -1,0 +1,90 @@
+* {
+    font-family: poppins;
+}
+
+body {
+    width: 100vh;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-sizing: content-box;
+    padding:18px 16px ;
+    border-radius: 18px;
+    background-color: black;
+}
+
+.first-line, .second-line, .third-line{
+    gap: 6px;
+    height: 55px;
+}
+
+.main-keys .fourth-line * ,  .main-keys .fifth-line *{
+    height: 55px;
+}
+
+.main-keys .fourth-line, .main-keys .fifth-line{
+    display: flex;
+    gap: 6px;
+}
+
+.calculator div {
+    display: flex;
+}
+
+.calculator div * {
+    flex: 1;
+}
+
+.calculator .main-keys {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 4.2;
+}
+.main-keys .fifth-line .zero{
+    flex: 2.4;
+}
+.calculator .bottom-part {
+    display: flex;
+    gap: 6px;
+}
+
+button {
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(44, 44, 44);
+    color: rgb(0, 80, 230);
+}
+
+.prop {
+    background-color: rgb(194, 194, 194);
+    color: black;
+}
+
+.opr {
+    background-color: rgb(0, 80, 230);
+    color: aliceblue;
+}
+
+.screen {
+    color: aliceblue;
+    text-align: right;
+    padding: 14px 10px;
+    font-size: 26px;
+    border:  rgb(0, 80, 230) solid 2px;
+    border-radius: 8px;
+    margin: 12px 0px;
+}
