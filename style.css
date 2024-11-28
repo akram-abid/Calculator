@@ -1,41 +1,49 @@
 * {
     font-family: poppins;
-}
-
-body {
-    width: 100vh;
-    height: 100vh;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .calculator {
-    width: 250px;
+    width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     box-sizing: content-box;
-    padding:18px 16px ;
+    padding:18px 20px ;
     border-radius: 18px;
     background-color: black;
 }
 
+.calculator p {
+    color: rgb(0, 80, 230);
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 8px 0px 0px 0px;
+}
+
 .first-line, .second-line, .third-line{
-    gap: 6px;
-    height: 55px;
+    gap: 8px;
+    height: 65px;
 }
 
 .main-keys .fourth-line * ,  .main-keys .fifth-line *{
-    height: 55px;
+    height: 65px;
 }
 
 .main-keys .fourth-line, .main-keys .fifth-line{
     display: flex;
-    gap: 6px;
+    gap: 8px;
 }
 
 .calculator div {
@@ -49,20 +57,20 @@ body {
 .calculator .main-keys {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    flex: 4.2;
+    gap: 8px;
+    flex: 3.2;
 }
 .main-keys .fifth-line .zero{
-    flex: 2.4;
+    flex: 2.1;
 }
 .calculator .bottom-part {
     display: flex;
-    gap: 6px;
+    gap: 8px;
 }
 
 button {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     border: none;
     border-radius: 8px;
     background-color: rgb(44, 44, 44);
@@ -86,5 +94,5 @@ button {
     font-size: 26px;
     border:  rgb(0, 80, 230) solid 2px;
     border-radius: 8px;
-    margin: 12px 0px;
+    margin: 4px 0px 12px 0px;
 }

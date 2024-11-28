@@ -2,15 +2,35 @@ let arg1 = 0, arg2 = 0;
 let opr = "";
 let argi = true;
 let another = false;
+let pointAdd = 0;
 
 function updateArgs(nbr){
+
     if(argi){
-        arg1 = (arg1 * 10) + nbr;
-        console.log(`arg1=${arg1}, arg=${arg2}, opr=${opr} another=${another}`); 
+        if(pointAdd != 0){
+            arg1 = arg1 +  (Math.pow((0.1), pointAdd) * nbr);
+            arg1 = parseFloat(arg1.toFixed(pointAdd));
+            pointAdd += 1;
+            console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`);
+        }else{
+        if(arg1 == "oh man don't"){
+            arg1 = nbr;
+        }else{
+            arg1 = (arg1 * 10) + nbr;
+            console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi}, opr=${opr} another=${another} pointAdd=${pointAdd}`); 
+        }
+    }
     }else{
+        if(pointAdd != 0){
+            arg2 = arg2 +  (Math.pow((0.1), pointAdd) * nbr);
+            arg2 = parseFloat(arg2.toFixed(pointAdd));
+            pointAdd += 1;
+            console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`);
+        }else {
         arg2 = (arg2 * 10) + nbr;
-        console.log(`arg1=${arg1}, arg=${arg2}, opr=${opr} another=${another}`);
-        another = true;   
+        console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`);
+        another = true;
+        }   
     }
 }
 
@@ -18,7 +38,8 @@ function updateOpr(Opr){
     opr = Opr;
     argi = false;
     another = false;
-    console.log(`arg1=${arg1}, arg=${arg2}, opr=${opr} another=${another}`); 
+    pointAdd = 0;
+    console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`); 
 }
 
 function add(arg1, arg2){
@@ -32,9 +53,10 @@ function multiply(arg1, arg2){
 }
 function devide(arg1, arg2){
     if(arg2 == 0){
-        return "error man";
+        return "oh man don't"
+    }else{
+        return arg1 / arg2;
     }
-    return arg1 / arg2;
 }
 
 function operate(number1, opr, number2){
@@ -76,7 +98,6 @@ const four = document.querySelector(".four");
 four.addEventListener('click', () => {
     updateArgs(4);
     populate();
-    
 });
 const five = document.querySelector(".five");
 five.addEventListener('click', () => {
@@ -148,29 +169,63 @@ ac.addEventListener('click', () => {
     screen.innerText = 0;
     arg1 = arg2 = 0;
     argi = true;
+    pointAdd = 0;
     opr = "";
-    console.log(`arg1=${arg1}, arg=${arg2}, opr=${opr} another=${another}`); 
+    console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`); 
 });
 const equal = document.querySelector(".equal");
 equal.addEventListener('click', () => {
     arg1 = operate(arg1, opr, arg2);
-    arg2 = 0;
-    screen.innerText = arg1;
-    argi = false; 
-    another = false;
+    if(arg1 == "oh man don't"){
+        another = false;
+        pointAdd = 0;
+        argi = true;
+        pointAdd = 0;
+        screen.innerText = arg1;
+        console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`);
+    } 
+    else{
+        console.log(`arg1=${arg1}, ar g=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`);
+        arg2 = 0;
+        screen.innerText = parseFloat(arg1.toFixed(pointAdd));
+        pointAdd = 0;
+        argi = false; 
+        another = false;
+    }
 });
 const del = document.querySelector(".del");
 del.addEventListener('click', () => {
     if(argi){
-        arg1 = (arg1 - (arg1 % 10)) / 10;
-        populate();
-        console.log(`arg1=${arg1}, arg=${arg2}, opr=${opr} another=${another}`); 
+        if(pointAdd > 1){
+            arg1 = arg1 * (Math.pow(10, pointAdd - 1));
+            arg1 = (arg1 - (arg1 % 10)) / 10;
+            pointAdd --;
+            arg1 = arg1 / (Math.pow(10, pointAdd-1));
+            arg1 = parseFloat(arg1.toFixed(pointAdd));
+            populate();
+        }else{
+            arg1 = (arg1 - (arg1 % 10)) / 10;
+            populate();
+            console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`); 
+        }
     }else{
-        arg2 =(arg - (arg2 % 10)) - 10;
-        populate();
-        console.log(`arg1=${arg1}, arg=${arg2}, opr=${opr} another=${another}`);
-        another = true;   
+        if(pointAdd > 1){
+            arg2 = arg2 * (Math.pow(10, pointAdd - 1));
+            arg2 = (arg2 - (arg2 % 10)) / 10;
+            pointAdd --;
+            arg2 = arg2 / (Math.pow(10, pointAdd-1));
+            arg2 = parseFloat(arg2.toFixed(pointAdd));
+            populate();
+        }else{
+            arg2 =(arg2 - (arg2 % 10)) - 10;
+            populate();
+            console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`);
+            another = true;   
+        }
     }
 });
-
-
+const point = document.querySelector(".point");
+point.addEventListener('click', () => {
+    pointAdd = 1;
+    console.log(`arg1=${arg1}, arg=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`);
+});
