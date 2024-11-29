@@ -187,7 +187,7 @@ equal.addEventListener('click', () => {
     else{
         console.log(`arg1=${arg1}, ar g=${arg2}, argi=${argi},opr=${opr} another=${another} pointAdd=${pointAdd}`);
         arg2 = 0;
-        screen.innerText = parseFloat(arg1.toFixed(pointAdd));
+        screen.innerText = parseFloat(arg1);
         pointAdd = 0;
         argi = false; 
         another = false;
